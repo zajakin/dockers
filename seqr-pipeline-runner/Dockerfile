@@ -10,5 +10,5 @@ RUN apt update \
 	&& apt clean -y \
 	&& /usr/local/bin/python3 -m pip install --upgrade pip \
 	&& pip install -U `pip list --outdated | awk 'NR>2 {print $1}'` \
-	&& wget https://github.com/zajakin/dockers/raw/master/seqr-pipeline-runner/vep-GRCh37.json -o /vep-GRCh37.json \
-	&& wget https://github.com/zajakin/dockers/raw/master/seqr-pipeline-runner/vep-GRCh38.json -o /vep-GRCh38.json
+	&& wget https://github.com/zajakin/dockers/raw/master/seqr-pipeline-runner/vep-GRCh37.json -O /vep-GRCh37.json \
+	&& wget https://github.com/zajakin/dockers/raw/master/seqr-pipeline-runner/vep-GRCh38.json -O /vep-GRCh38.json
