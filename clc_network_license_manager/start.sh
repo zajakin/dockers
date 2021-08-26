@@ -13,14 +13,16 @@ rm CLCNetworkLicenseManager_5.sh
 chown -R clclicsrv /opt/CLCNetworkLicenseManager5
 exit
 docker commit CLCNetworkLicenseManager5_pre clc_network_license_manager5
-docker images
 docker rm CLCNetworkLicenseManager5_pre
+
+
+docker images
 touch ./licenseserver.log
+chmod 666 licenseserver.log
 docker run -d --name="CLCNetworkLicenseManager5" -t -u clclicsrv -p 6200:6200 -v `pwd`/licenseserver.log:/opt/CLCNetworkLicenseManager5/licenseserver.log -v `pwd`/licenses:/opt/CLCNetworkLicenseManager5/licenses --restart always clc_network_license_manager5 /opt/CLCNetworkLicenseManager5/runscript/clclicsrv start 
-docker ps -a
+docker ps -lsa
 docker logs CLCNetworkLicenseManager5
 docker top CLCNetworkLicenseManager5
-docker exec -it CLCNetworkLicenseManager5 bash
 docker exec -it CLCNetworkLicenseManager5 /opt/CLCNetworkLicenseManager5/downloadlicense
 popd
 
