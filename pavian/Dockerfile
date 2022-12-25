@@ -4,9 +4,10 @@ RUN apt-get update && apt-get install --no-install-recommends r-base-dev -y \
 	&& apt autoremove -y \
 	&& apt clean -y \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /srv/shiny-server/* && R -e "sapply(list.files(system.file('shinyapp',package='pavian'),full.names=TRUE),file.copy,to='/srv/shiny-server/',recursive=TRUE)"
+	&& rm -rf /srv/shiny-server/*
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 COPY shiny-server.sh /usr/bin/shiny-server.sh
+RUN R -e "sapply(list.files(system.file('shinyapp',package='pavian'),full.names=TRUE),file.copy,to='/srv/shiny-server/',recursive=TRUE)"
 EXPOSE 80
 STOPSIGNAL SIGQUIT
 CMD ["/usr/bin/shiny-server.sh"]
