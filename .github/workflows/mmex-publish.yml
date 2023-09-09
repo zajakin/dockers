@@ -51,3 +51,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Upload .deb
+        uses: actions/upload-artifact@v3
+        with:
+          name: mmex.deb
+          path: /mmex*.deb
+          
+
