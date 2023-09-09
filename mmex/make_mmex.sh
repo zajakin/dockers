@@ -1,5 +1,5 @@
 apt-get update
-apt-get install -y --no-install-recommends curl tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.0-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev
+apt-get install -y --no-install-recommends curl ca-certificates tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.0-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev
 #wx3.0-i18n libwxgtk-webview3.0-gtk3-dev libgtk-3-dev
 cd /tmp
 
@@ -27,5 +27,5 @@ cmake --build . --target package
 mv ./mmex*.deb /  # sudo apt install /mmex*.deb && rm ~/Downloads/mmex*.deb
 popd
 rm -fr moneymanagerex wxWidgets-$WX
-apt-get purge -y curl tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.0-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev && \
+apt-get purge -y tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.0-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev && \
 apt-get autoremove -y && apt-get clean -y
