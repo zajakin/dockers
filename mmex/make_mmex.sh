@@ -15,7 +15,7 @@ pushd wxWidgets-$WX/build_gtk
 make
 popd
 
-MMEX="1.6.4"
+MMEX="1.7.0"
 git clone --recursive https://github.com/moneymanagerex/moneymanagerex.git
 pushd moneymanagerex && git checkout v$MMEX && popd
 mkdir moneymanagerex/build
