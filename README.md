@@ -4,7 +4,7 @@
 
 To install enter this command in your terminal on server:
 
-                docker run --rm -v $(pwd):/mnt ghcr.io/zajakin/mmex find -maxdepth 1 -name mmex*.deb -exec cp {} /mnt/ \; && docker rmi ghcr.io/zajakin/mmex
+    docker run --rm -v $(pwd):/mnt ghcr.io/zajakin/mmex find -maxdepth 1 -name mmex*.deb -exec cp {} /mnt/ \; && docker rmi ghcr.io/zajakin/mmex
 
 Containers:
 
