@@ -3,7 +3,7 @@ apt-get install -y --no-install-recommends curl ca-certificates tcl build-essent
 #wx3.0-i18n libwxgtk-webview3.0-gtk3-dev libgtk-3-dev
 cd /tmp
 
-WX="3.2.1"
+WX="3.2.4"
 rm -fr moneymanagerex wxWidgets-$WX
 #git clone --recursive https://github.com/wxWidgets/wxWidgets.git
 curl -fsSL -O https://github.com/wxWidgets/wxWidgets/releases/download/v$WX/wxWidgets-$WX.tar.bz2
