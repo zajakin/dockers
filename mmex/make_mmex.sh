@@ -21,7 +21,7 @@ pushd moneymanagerex && git checkout v$MMEX && popd
 mkdir moneymanagerex/build
 pushd moneymanagerex/build
 export MAKEFLAGS=-j8
-cmake -DCMAKE_CXX_FLAGS="-w" -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wxWidgets-$WX/build_gtk/wx-config -Wno-dev .. #-DCMAKE_INCLUDE_PATH=/tmp/wxWidgets/include/wx -DCMAKE_PREFIX_PATH==/tmp/wxWidgets/build_gtk -DCMAKE_LIBRARY_PATH=/tmp/wxWidgets/build_gtk/lib
+cmake -DCMAKE_CXX_FLAGS="-w" -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wxWidgets-$WX/build_gtk/wx-config  -DwxWidgets_LIBRARIES=/tmp/wxWidgets-$WX/build_gtk/lib -DwxWidgets_INCLUDE_DIRS=/tmp/wxWidgets-$WX/include -Wno-dev .. #-DCMAKE_INCLUDE_PATH=/tmp/wxWidgets/include/wx -DCMAKE_PREFIX_PATH==/tmp/wxWidgets/build_gtk -DCMAKE_LIBRARY_PATH=/tmp/wxWidgets/build_gtk/lib
 sed -i 's!Debian.n/a!Debian!g' CPackConfig.cmake
 cmake --build . --target package
 mv ./mmex*.deb /  # sudo apt install /mmex*.deb && rm ~/Downloads/mmex*.deb
