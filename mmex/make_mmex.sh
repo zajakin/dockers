@@ -4,14 +4,14 @@ apt-get install -y --no-install-recommends curl ca-certificates tcl build-essent
 cd /tmp
 
 WX="3.2.4"
-rm -fr moneymanagerex wxWidgets-$WX
+rm -fr moneymanagerex wxWidgets-$WX tmp
 #git clone --recursive https://github.com/wxWidgets/wxWidgets.git
 curl -fsSL -O https://github.com/wxWidgets/wxWidgets/releases/download/v$WX/wxWidgets-$WX.tar.bz2
 tar xjf wxWidgets-$WX.tar.bz2
 rm wxWidgets-$WX.tar.bz2
 mkdir wxWidgets-$WX/build_gtk
 pushd wxWidgets-$WX/build_gtk
-../configure --disable-shared --enable-cxx11 --with-cxx=11 --without-libtiff # --enable-webview --enable-monolithic --enable-unicode
+../configure --disable-shared --enable-cxx11 --with-cxx=11 --without-libtiff --enable-webview --enable-unicode # --enable-monolithic
 make
 popd
 
@@ -21,7 +21,8 @@ pushd moneymanagerex && git checkout v$MMEX && popd
 mkdir moneymanagerex/build
 pushd moneymanagerex/build
 export MAKEFLAGS=-j8
-cmake -DCMAKE_CXX_FLAGS="-w" -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wxWidgets-$WX/build_gtk/wx-config  -DwxWidgets_LIBRARIES=/tmp/wxWidgets-$WX/build_gtk/lib -DwxWidgets_INCLUDE_DIRS=/tmp/wxWidgets-$WX/include -Wno-dev .. # -DCMAKE_PREFIX_PATH==/tmp/wxWidgets/build_gtk
+
+cmake -DCMAKE_CXX_FLAGS="-w" -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wxWidgets-$WX/build_gtk/wx-config -DwxWidgets_LIBRARIES=/tmp/wxWidgets-$WX/build_gtk/lib -DwxWidgets_INCLUDE_DIRS=/tmp/wxWidgets-$WX/include -Wno-dev .. # -DCMAKE_PREFIX_PATH==/tmp/wxWidgets/build_gtk
 sed -i 's!Debian.n/a!Debian!g' CPackConfig.cmake
 cp /tmp/moneymanagerex/resources/dist/linux/share/metainfo/org.moneymanagerex.MMEX.metainfo.xml.in /tmp/moneymanagerex/org.moneymanagerex.MMEX.metainfo.xml
 cmake --build . --target package
