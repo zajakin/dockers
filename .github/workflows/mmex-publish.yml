@@ -56,7 +56,7 @@ jobs:
       - name: Upload .deb
         uses: actions/upload-artifact@v3
         with:
-          name: mmex.deb
+          name: mmex_debian_testing.zip
           path: mmex*.deb
           
 
