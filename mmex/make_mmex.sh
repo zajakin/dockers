@@ -11,7 +11,7 @@ tar xjf wxWidgets-$WX.tar.bz2
 rm wxWidgets-$WX.tar.bz2
 mkdir wxWidgets-$WX/build_gtk
 pushd wxWidgets-$WX/build_gtk
-../configure --disable-shared --enable-stl --enable-cxx13 --with-cxx=13 --enable-utf8only --enable-intl --enable-xlocale --enable-webviewwebkit --with-gtk=4 # --without-libtiff --enable-monolithic --enable-webview --enable-unicode
+../configure --disable-shared --enable-stl --with-cxx=13 --enable-utf8only --enable-intl --enable-xlocale --enable-webviewwebkit --with-gtk=4 # --without-libtiff --enable-monolithic --enable-webview --enable-unicode --enable-cxx13
 make
 popd
 
