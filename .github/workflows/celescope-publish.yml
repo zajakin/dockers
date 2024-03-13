@@ -11,7 +11,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: zajakin/celescope   # github.repository as <account>/<repo>
-
+  GH_TOKEN: ${{ github.token }}
 jobs:
   build:
     runs-on: ubuntu-latest
