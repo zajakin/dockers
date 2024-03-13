@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Get from git
-        run: gh repo clone singleron-RD/CeleScope
+        run: gh repo clone singleron-RD/CeleScope && ls && ls CeleScope
       # - name: Checkout repository
       #   uses: actions/checkout@v3
       - name: Setup Docker buildx
@@ -46,7 +46,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v2
         with:
-          context: mmex
+          context: CeleScope
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
