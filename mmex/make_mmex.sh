@@ -1,5 +1,5 @@
 apt-get update
-apt-get install -y --no-install-recommends appstream curl ca-certificates tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.0-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev
+apt-get install -y --no-install-recommends appstream curl ca-certificates tcl build-essential ccache cmake file gettext git libcurl4-openssl-dev libwebkit2gtk-4.1-dev liblua5.3-dev lsb-release pkg-config rapidjson-dev
 #wx3.0-i18n libwxgtk-webview3.0-gtk3-dev libgtk-3-dev
 cd /tmp
 
