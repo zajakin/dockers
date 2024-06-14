@@ -18,7 +18,9 @@ popd
 MMEX="1.8.1"
 git clone --recursive https://github.com/moneymanagerex/moneymanagerex.git
 set advice.detachedHead=false
-pushd moneymanagerex && git checkout v$MMEX && popd
+pushd moneymanagerex
+git checkout v$MMEX
+popd
 mkdir moneymanagerex/build
 pushd moneymanagerex/build
 export MAKEFLAGS=-j8
