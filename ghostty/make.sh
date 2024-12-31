@@ -1,5 +1,5 @@
  VER="1.0.0"
- VER="1.0.0_night"
+ # VER="1.0.0_night"
 
  apt-get update
  apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils
