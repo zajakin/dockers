@@ -1,4 +1,5 @@
  VER="1.0.0"
+ VER="1.0.0_night"
 
  apt-get update
  apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils
@@ -11,8 +12,8 @@
  mkdir -p $debdir/DEBIAN
  git clone --recursive https://github.com/mitchellh/ghostty.git
  cd ghostty
- git checkout v$VER
-# sed -i 's!Debian.n/a!Debian!g' CPackConfig.cmake
+ advice.detachedHead="false"
+ # git checkout v$VER
  /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -Doptimize=ReleaseFast
 
  cd /
