@@ -14,7 +14,7 @@
  cd ghostty
  advice.detachedHead="false"
  # git checkout v$VER
- /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -Doptimize=ReleaseFast
+ /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -Doptimize=ReleaseFast -fsys=fontconfig
 
  cd /
  bind "set disable-completion on"
