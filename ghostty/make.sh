@@ -12,10 +12,12 @@
  mkdir -p $debdir/DEBIAN
  git clone --recursive https://github.com/mitchellh/ghostty.git
  cd ghostty
- advice.detachedHead="false"
+ set advice.detachedHead="false"
+ # export advice.detachedHead
  # git checkout v$VER
  /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -Doptimize=ReleaseFast -fsys=fontconfig
 
+ VER=$($debdir/usr/bin/ghostty --version | head -n 1 | cut -d " " -f 2 )
  cd /
  bind "set disable-completion on"
  cat <<END > ghostty/DEBIAN/control
