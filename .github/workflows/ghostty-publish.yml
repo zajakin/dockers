@@ -52,11 +52,15 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Extract .deb
-        run: docker run --rm -v $(pwd):/mnt ghcr.io/zajakin/ghostty find -maxdepth 1 -name ghostty*.deb -exec cp {} /mnt/ \; && docker rmi ghcr.io/zajakin/ghostty
+        run: |
+      			docker run --rm -v $(pwd):/mnt ghcr.io/zajakin/ghostty find -maxdepth 1 -name ghostty*.deb -exec cp {} /mnt/ \;
+      			docker rmi ghcr.io/zajakin/ghostty
+      			echo "version=$(ls ghostty*.deb)" >> $GITHUB_ENV
       - name: Upload .deb
         uses: actions/upload-artifact@v4
         with:
-          name: ghostty_debian_testing
-          path: ghostty*.deb
+          name: ${{ env.version }}.zip
+          path: ${{ env.version }}
           compression-level: 9
+          retention-days: 90
 
