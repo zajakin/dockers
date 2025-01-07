@@ -15,7 +15,7 @@
  set advice.detachedHead="false"
  # export advice.detachedHead
  # git checkout v$VER
- /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -Doptimize=ReleaseSafe -fsys=fontconfig
+ /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -fsys=fontconfig #  -Doptimize=ReleaseSafe
 
  VER=$($debdir/usr/bin/ghostty --version | head -n 1 | cut -d " " -f 2 )
  cd /
