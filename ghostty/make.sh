@@ -12,19 +12,25 @@
  mkdir -p $debdir/DEBIAN
  git clone --recursive https://github.com/mitchellh/ghostty.git
  cd ghostty
+ sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' build.zig
  set advice.detachedHead="false"
  # export advice.detachedHead
  # git checkout v$VER
- /opt/zig-linux-x86_64-0.13.0/zig build -p $debdir/usr -fsys=fontconfig #  -Doptimize=ReleaseSafe
+ /opt/zig-linux-x86_64-0.13.0/zig build --summary all -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseSafe -Dcpu=baseline
 
  VER=$($debdir/usr/bin/ghostty --version | head -n 1 | cut -d " " -f 2 )
  cd /
  bind "set disable-completion on"
  cat <<END > ghostty/DEBIAN/control
 Package: ghostty
+Source: ghostty
+Section: utils
+Priority: optional
 Version: $VER
 Maintainer: Mitchell Hashimoto
-Architecture: all
+Homepage: https://ghostty.org/
+Architecture: amd64
+Depends: libonig5
 Description: Ghostty terminal emulator
 END
 
