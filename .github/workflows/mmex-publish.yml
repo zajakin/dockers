@@ -54,7 +54,7 @@ jobs:
       - name: Extract .deb
         run: docker run --rm -v $(pwd):/mnt ghcr.io/zajakin/mmex find -maxdepth 1 -name mmex*.deb -exec cp {} /mnt/ \; && docker rmi ghcr.io/zajakin/mmex
       - name: Upload .deb
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mmex_debian_testing.zip
           path: mmex*.deb
