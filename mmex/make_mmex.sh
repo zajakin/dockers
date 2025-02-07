@@ -15,7 +15,7 @@ pushd wxWidgets-$WX/build_gtk
 make
 popd
 
-MMEX="1.8.1"
+MMEX="1.9.0"
 git clone --recursive https://github.com/moneymanagerex/moneymanagerex.git
 set advice.detachedHead=false
 pushd moneymanagerex
