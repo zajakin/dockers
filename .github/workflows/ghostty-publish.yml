@@ -1,7 +1,7 @@
 name: Docker image for ghostty
 on:
-#  schedule:
-#    - cron: '42 7 * * *'
+  schedule:
+    - cron: '42 7 * * *'
   push:
     branches: [ "master" ]
     tags: [ 'v*.*.*' ]    # Publish semver tags as releases.
