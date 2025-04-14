@@ -57,7 +57,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.version }}
-          path: ${{ env.version }}
-          compression-level: 9
+          path: ghostty*.deb   #${{ env.version }}
+          compression-level: 0
           retention-days: 90
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
 
