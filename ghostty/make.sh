@@ -1,22 +1,28 @@
- # VER="1.0.0"
+ VER="1.1.3"
  # VER="1.0.0_night"
 
  apt-get update -y
- apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils ncurses-term
+ apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils ncurses-term blueprint-compiler gettext pandoc ament-cmake-xmllint # python3-ament-xmllint
  cd /tmp
 
- curl https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz --output zig-linux-x86_64-0.13.0.tar.xz
- tar -xf zig-linux-x86_64-0.13.0.tar.xz -C /opt
+ ZV="0.14.0"
+ curl https://ziglang.org/download/${ZV}/zig-linux-x86_64-${ZV}.tar.xz --output zig-linux-x86_64-${ZV}.tar.xz
+ tar -xf zig-linux-x86_64-${ZV}.tar.xz -C /opt
 
  debdir="/ghostty"
+ rm -rf $debdir /tmp/ghostty
  mkdir -p $debdir/DEBIAN
  git clone --recursive https://github.com/mitchellh/ghostty.git
  cd ghostty
- sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' build.zig
+ sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' src/build/SharedDeps.zig
  set advice.detachedHead="false"
  # export advice.detachedHead
  # git checkout v$VER
- /opt/zig-linux-x86_64-0.13.0/zig build --summary all -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseFast -Dcpu=baseline
+ /opt/zig-linux-x86_64-${ZV}/zig build --summary all -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Demit-docs
+ chmod +x $debdir/DEBIAN/postinst
+ chmod +x $debdir/DEBIAN/preinst
+ chmod +x $debdir/DEBIAN/prerm
+
 
  VER=$($debdir/usr/bin/ghostty --version | head -n 1 | cut -d " " -f 2 )
  cd /
