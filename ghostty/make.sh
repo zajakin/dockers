@@ -2,7 +2,7 @@
  # VER="1.0.0_night"
 
  apt-get update -y
- apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils ncurses-term blueprint-compiler gettext pandoc ament-cmake-xmllint # python3-ament-xmllint
+ apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils ncurses-term blueprint-compiler gettext pandoc ament-cmake-xmllint libgtk4-layer-shell0 # python3-ament-xmllint
  cd /tmp
 
  ZV="0.14.0"
@@ -24,7 +24,7 @@
  chmod +x $debdir/DEBIAN/preinst
  chmod +x $debdir/DEBIAN/prerm
 
-
+ ln -s /usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so.0 /usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so
  VER=$($debdir/usr/bin/ghostty --version | head -n 1 | cut -d " " -f 2 )
  cd /
  [ -e /usr/share/terminfo/g/ghostty ] && mv $debdir/usr/share/terminfo/g/ghostty $debdir/usr/share/terminfo/g/ghostty.orig
