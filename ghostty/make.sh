@@ -15,6 +15,7 @@
  git clone --recursive https://github.com/mitchellh/ghostty.git
  cd ghostty
  sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' src/build/SharedDeps.zig
+ sed -i 's/linkSystemLibrary2("gtk4-layer-shell", dynamic_link_opts)/linkSystemLibrary2("gtk4-layer-shell0", dynamic_link_opts)/' src/build/SharedDeps.zig
  set advice.detachedHead="false"
  # export advice.detachedHead
  # git checkout v$VER
@@ -37,7 +38,7 @@ Version: $VER
 Maintainer: Mitchell Hashimoto
 Homepage: https://ghostty.org/
 Architecture: amd64
-Depends: libonig5
+Depends: libonig5 libgtk4-layer-shell0
 Description: Ghostty terminal emulator
 END
 
