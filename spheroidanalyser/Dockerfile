@@ -1,6 +1,6 @@
 FROM rocker/shiny
 # FROM debian:testing-slim
-# docker run --rm -p 888:80 -v $(pwd):/mnt ghcr.io/zajakin/spheroidanalyser
+# docker run --rm  -it -p 888:80 -v $(pwd):/mnt -e R_LIBS=/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/site-library:/usr/lib/R/library -e R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library ghcr.io/zajakin/spheroidanalyser bash
 # docker run -it rocker/shiny bash    # ; remotes::install_github('GliomaGenomics/SpheroidAnalyseR')
 #RUN apt-get update && apt-get install --no-install-recommends r-base-dev git -y \
 #	&& R -e "options(repos = c(CRAN = 'http://cran.rstudio.com')); install.packages('BiocManager'); BiocManager::install(c('tidyverse','ggthemes','gridExtra','readxl','openxlsx','plotrix','writexl','ggpubr','shiny','shinyjs','DT'))" \
@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install --no-install-recommends r-base-dev git r-c
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /srv/shiny-server \
 	&& ln -s /SpheroidAnalyseR /srv/shiny-server
-COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
-COPY shiny-server.sh /usr/bin/shiny-server.sh
-EXPOSE 80
+#COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
+#COPY shiny-server.sh /usr/bin/shiny-server.sh
+#EXPOSE 80
 STOPSIGNAL SIGQUIT
-CMD ["/usr/bin/shiny-server.sh"]
+#CMD ["/usr/bin/shiny-server.sh"]
