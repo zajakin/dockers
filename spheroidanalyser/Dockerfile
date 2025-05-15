@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install --no-install-recommends r-base-dev git -y 
 	&& R -e "options(repos = c(CRAN = 'http://cran.rstudio.com')); install.packages(c('remotes')); install.packages('BiocManager')" \
 	&& apt autoremove -y \
 	&& apt clean -y \
-	&& git clone --recursive https://github.com/GliomaGenomics/SpheroidAnalyseR.git
+	&& git clone --recursive https://github.com/GliomaGenomics/SpheroidAnalyseR.git \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /srv/shiny-server \
 	&& ln -s /SpheroidAnalyseR /srv/shiny-server
