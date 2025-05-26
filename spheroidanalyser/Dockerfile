@@ -1,6 +1,6 @@
 FROM rocker/shiny
 # FROM debian:testing-slim
-# docker run -it -p 3838:3838 -v $(pwd):/mnt -e R_LIBS=/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/site-library:/usr/lib/R/library -e R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library ghcr.io/zajakin/spheroidanalyser bash
+# docker run --rm --name SpheroidAnalyseR -p 3838:3838 -d -v $(pwd):/mnt -e R_LIBS=/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/site-library:/usr/lib/R/library -e R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library ghcr.io/zajakin/spheroidanalyser
 # docker run -it rocker/shiny bash    # ; remotes::install_github('GliomaGenomics/SpheroidAnalyseR')
 #RUN apt-get update && apt-get install --no-install-recommends r-base-dev git -y \
 #	&& R -e "options(repos = c(CRAN = 'http://cran.rstudio.com')); install.packages('BiocManager'); BiocManager::install(c('tidyverse','ggthemes','gridExtra','readxl','openxlsx','plotrix','writexl','ggpubr','shiny','shinyjs','DT'))" \
