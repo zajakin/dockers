@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 # docker run -it debian:buster-slim bash
 RUN apt update && apt dist-upgrade -y --no-install-recommends && apt install -y --no-install-recommends wget gawk gcc g++ make cmake automake curl unzip zip bzip2 tar gzip pigz parallel build-essential libncurses5-dev libc6-dev zlib1g zlib1g-dev libtbb-dev libtbb2 ca-certificates-java \
-    && apt install -y --no-install-recommends python python-dev python-numpy python-biopython python-xlrd python-openpyxl default-jdk \
+    && apt install -y --no-install-recommends python python-dev python-numpy python-biopython python-xlrd python-openpyxl default-jdk libgcc-s1 \
     && wget https://ftp.debian.org/debian/pool/main/g/glibc/libc6_2.36-9+deb12u10_amd64.deb \
     && dpkg -i libc6_2.36-9+deb12u10_amd64.deb \
     && wget http://sf.net/projects/fusioncatcher/files/bootstrap.py -O bootstrap.py \
