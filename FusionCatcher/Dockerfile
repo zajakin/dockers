@@ -5,6 +5,8 @@ RUN apt update && apt dist-upgrade -y --no-install-recommends && apt install -y 
     && wget http://sf.net/projects/fusioncatcher/files/bootstrap.py -O bootstrap.py \
     && python bootstrap.py -t -y \
     && wget https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64.v369/faToTwoBit -O /opt/fusioncatcher/tools/fatotwobit/faToTwoBit \
+    && wget https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64.v369/blat -O /opt/fusioncatcher/tools/blat/blat \
+    && wget https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64.v369/liftOver -O /opt/fusioncatcher/tools/liftover/liftOver \
     && mv /opt/fusioncatcher/data /opt/fusioncatcher/data.orig \
     && apt autoremove -y && apt clean -y && rm -rf /var/lib/apt/lists/*
 STOPSIGNAL SIGQUIT
