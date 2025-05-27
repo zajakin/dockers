@@ -10,7 +10,7 @@ LABEL container.base.image="debian"
 LABEL tags="Fusion Calling"
 
 #Install necessary tools onto debian system  #Install necessary R packages used in overlap script  #Install tools using pip that will be used in the analysis
-RUN apt-get update -y && apt-get install --no-install-recommends -y r-base make g++ libcurl4-openssl-dev vim less parallel python3-pip curl libpq-dev jq awscli python3-boto3 \
+RUN apt-get update -y && apt-get install --no-install-recommends -y r-base make g++ libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev vim less parallel python3-pip curl libpq-dev jq awscli python3-boto3 \
    && R -e "install.packages(c('devtools','optparse','VennDiagram','gridExtra','dplyr','readr','DBI','RPostgres','dbplyr','magrittr','purrr'), repos='http://cran.us.r-project.org/')"
 
 COPY SCRIPTS /SCRIPTS
