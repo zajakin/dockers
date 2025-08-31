@@ -1,5 +1,5 @@
 FROM rocker/shiny
-RUN apt-get update && apt-get install --no-install-recommends r-base-dev -y \
+RUN apt-get update && apt-get install --no-install-recommends r-base-dev libssl-dev -y \
 	&& R -e "options(repos = c(CRAN = 'http://cran.rstudio.com')); install.packages(c('remotes')); install.packages('BiocManager'); BiocManager::install('Rsamtools'); remotes::install_github('fbreitwieser/pavian')" \
 	&& apt autoremove -y \
 	&& apt clean -y \
