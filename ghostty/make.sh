@@ -5,7 +5,7 @@
  apt-get install -y --no-install-recommends curl ca-certificates libgtk-4-dev libadwaita-1-dev git pkg-config xz-utils ncurses-term blueprint-compiler gettext pandoc ament-cmake-xmllint #libgtk4-layer-shell0 libgtk4-layer-shell-dev # python3-ament-xmllint
  cd /tmp
 
- ZV="0.14.0"
+ ZV="0.15.2"
  curl https://ziglang.org/download/${ZV}/zig-linux-x86_64-${ZV}.tar.xz --output zig-linux-x86_64-${ZV}.tar.xz
  tar -xf zig-linux-x86_64-${ZV}.tar.xz -C /opt
 
