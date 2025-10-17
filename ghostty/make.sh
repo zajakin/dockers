@@ -6,8 +6,8 @@
  cd /tmp
 
  ZV="0.15.2"
- curl https://ziglang.org/download/${ZV}/zig-linux-x86_64-${ZV}.tar.xz --output zig-linux-x86_64-${ZV}.tar.xz
- tar -xf zig-linux-x86_64-${ZV}.tar.xz -C /opt
+ curl https://ziglang.org/download/${ZV}/zig-x86_64-linux-${ZV}.tar.xz --output zig-x86_64-linux-${ZV}.tar.xz
+ tar -xf zig-x86_64-linux-${ZV}.tar.xz -C /opt
 
  debdir="/ghostty"
  rm -rf $debdir /tmp/ghostty
@@ -21,7 +21,7 @@
  # export advice.detachedHead
  # git checkout v$VER
  # /opt/zig-linux-x86_64-${ZV}/zig build --summary all -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Demit-docs --verbose-link
-   /opt/zig-linux-x86_64-${ZV}/zig build --verbose-link -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseFast -Dcpu=baseline -Dstrip=true -Dpie=true -fno-sys=gtk4-layer-shell
+   /opt/zig-x86_64-linux-${ZV}/zig build --verbose-link -p $debdir/usr -fsys=fontconfig -Doptimize=ReleaseFast -Dcpu=baseline -Dstrip=true -Dpie=true -fno-sys=gtk4-layer-shell
 #  cat <<END >> $debdir/DEBIAN/postinst
 # ln -s /usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so.0 /usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so
 # END
