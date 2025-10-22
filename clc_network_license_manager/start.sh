@@ -22,7 +22,7 @@ bash /download/CLCNetworkLicenseManager_5.sh
 chown -R clclicsrv /opt/CLCNetworkLicenseManager5
 port=6222
 port=6200
-echo "#!/usr/bin/bash" >  /start.sh
+echo '#!/usr/bin/bash' >  /start.sh
 echo "/opt/CLCNetworkLicenseManager5/lmx-serv-clcbio -b -c /opt/CLCNetworkLicenseManager5/licenseserver.cfg -l /opt/CLCNetworkLicenseManager5/licenses/ -lf /opt/CLCNetworkLicenseManager5/licenseserver.log -port $port && exit" >> /start.sh
 chmod 777 /start.sh
 cat /start.sh
