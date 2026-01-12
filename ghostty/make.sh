@@ -1,4 +1,4 @@
- VER="1.2.2"
+ # VER="1.2.2"
  # VER="1.0.0_night"
 
  apt-get update -y
