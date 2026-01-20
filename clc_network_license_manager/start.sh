@@ -1,7 +1,13 @@
  n S
  TRIAL="trial"; port=6222
+ TRIAL="trial3"; port=6233
  TRIAL="";      port=6200
  secret=` cat ~/.ssh/CLC/secret$TRIAL | grep -v ^#`
+ 
+ docker restart CLCNetworkLicenseManager5$TRIAL
+ docker exec -u clclicsrv CLCNetworkLicenseManager5$TRIAL /start.sh
+ docker top CLCNetworkLicenseManager5$TRIAL
+ cat ~/CLCNetworkLicenseManager5$TRIAL/licenseserver.log
 
  mkdir ~/CLCNetworkLicenseManager5$TRIAL
  pushd ~/CLCNetworkLicenseManager5$TRIAL
@@ -20,8 +26,6 @@ bash /download/CLCNetworkLicenseManager_5.sh
 # rm CLCNetworkLicenseManager_5.sh
 # sed -i 's/su - $USER/bash/' /opt/CLCNetworkLicenseManager5/runscript/clclicsrv
 chown -R clclicsrv /opt/CLCNetworkLicenseManager5
-port=6222
-port=6200
 echo '#!/usr/bin/bash' >  /start.sh
 echo "/opt/CLCNetworkLicenseManager5/lmx-serv-clcbio -b -c /opt/CLCNetworkLicenseManager5/licenseserver.cfg -l /opt/CLCNetworkLicenseManager5/licenses/ -lf /opt/CLCNetworkLicenseManager5/licenseserver.log -port $port && exit" >> /start.sh
 chmod 777 /start.sh
