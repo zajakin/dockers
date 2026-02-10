@@ -4,7 +4,10 @@ RUN apt update -y && apt dist-upgrade -y && apt install python3-pip mc sudo tmux
     pip install --break-system-packages numpy && \
     pip install --break-system-packages biom-format && \
     pip install --break-system-packages kraken-biom && \
-    pip install --break-system-packages metaphlan && \
+    pip install --break-system-packages metaphlan==4.1.1 && \
+    mkdir -m 666 -p /data/db/metaphlan && \
+    rm -rf "`pip show metaphlan | awk '/Location/{print $2}'`/metaphlan/metaphlan_databases" && \
+    ln -s /data/db/metaphlan "`pip show metaphlan | awk '/Location/{print $2}'`/metaphlan/metaphlan_databases" && \
     pip install --break-system-packages humann --no-binary :all: && \
     chmod 666 `find /usr/local/lib/  -name  humann.cfg` # && \
 	 #useradd -ms /bin/bash humann
