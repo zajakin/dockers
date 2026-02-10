@@ -1,4 +1,4 @@
-name: Docker image for ghostty
+name: Docker image for HumanN
 on:
   # schedule:
   #   - cron: '42 7 * * *'
