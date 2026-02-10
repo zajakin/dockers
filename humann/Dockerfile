@@ -6,5 +6,5 @@ RUN apt update -y && apt dist-upgrade -y && apt install python3-pip mc sudo tmux
     pip install --break-system-packages numpy && \
     pip install --break-system-packages kraken-biom && \
     useradd -ms /bin/bash humann
-USER humann
+#USER humann
 CMD ["/usr/bin/bash"]
