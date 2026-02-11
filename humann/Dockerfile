@@ -1,6 +1,6 @@
 FROM debian:testing-slim
 # docker run -it debian:testing-slim bash
-RUN apt update -y && apt dist-upgrade -y && apt install python3-pip mc sudo tmux pigz bowtie2 diamond-aligner samtools -y && \
+RUN apt update -y && apt dist-upgrade -y && apt install python3-pip mc sudo tmux pigz bowtie2 diamond-aligner samtools glpk-utils -y && \
     pip install --break-system-packages numpy && \
     pip install --break-system-packages biom-format && \
     pip install --break-system-packages kraken-biom && \
