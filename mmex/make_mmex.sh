@@ -3,7 +3,7 @@ apt-get install -y --no-install-recommends appstream curl ca-certificates tcl bu
 #wx3.0-i18n libwxgtk-webview3.0-gtk3-dev libgtk-3-dev
 cd /tmp
 
-WX="3.3.1"
+WX="3.3.3"
 rm -fr moneymanagerex wxWidgets-$WX tmp
 #git clone --recursive https://github.com/wxWidgets/wxWidgets.git
 curl -fsSL -O https://github.com/wxWidgets/wxWidgets/releases/download/v$WX/wxWidgets-$WX.tar.bz2
@@ -15,7 +15,7 @@ pushd wxWidgets-$WX/build_gtk
 make
 popd
 
-MMEX="1.9.2"
+MMEX="1.9.3"
 git clone --recursive https://github.com/moneymanagerex/moneymanagerex.git
 set advice.detachedHead=false
 pushd moneymanagerex
